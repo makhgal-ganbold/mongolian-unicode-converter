@@ -1,0 +1,40 @@
+Sub unicode_converter()
+
+' Mongolian Unicode Converter for Microsoft PowerPoint
+' Author: Galaa
+' Web: http://galaa.mn/
+'
+' Converts ascii to unicode
+
+Dim n As Long
+n = ActiveWindow.Selection.TextRange.Length
+If n = 0 Then
+    MsgBox ("No Text Selected!")
+Else
+    Dim text As String
+    For Each c In ActiveWindow.Selection.TextRange.Characters
+        acsii_code = AscW(c)
+        Select Case (acsii_code)
+            Case 168
+                text = text + ChrW(1025)
+            Case 170
+                text = text + ChrW(1256)
+            Case 175
+                text = text + ChrW(1198)
+            Case 184
+                text = text + ChrW(1105)
+            Case 186
+                text = text + ChrW(1257)
+            Case 191
+                text = text + ChrW(1199)
+            Case 192 To 255
+                text = text + ChrW(acsii_code + 848)
+            Case Else
+                text = text + c
+        End Select
+    Next
+    ActiveWindow.Selection.TextRange.text = text
+    MsgBox "Convertion complete."
+End If
+
+End Sub

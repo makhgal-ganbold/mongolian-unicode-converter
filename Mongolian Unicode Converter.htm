@@ -1,0 +1,546 @@
+﻿<HEAD><TITLE>UTF-8 converter</TITLE>
+<div align="center"><SCRIPT language=JavaScript>
+  <!--
+   if(top.frames.length > 0)
+    top.location.href=self.location;
+   function toconvert()
+{
+var sourceareastr = document.board.sourcearea.value;
+var strlen = sourceareastr.length;
+document.board.destarea.value="";
+var str="";
+
+if (document.board.toutf[0].checked==true) { //convert from win1251 to unicode
+      for (i = 0; i < strlen;  i++) { 
+	var codestr = sourceareastr.charCodeAt(i);
+	//alert(codestr);
+	   switch(codestr) {
+		case 184: codestr=1105;break; //eo
+		case 168: codestr=1025;break; // capital EO
+	
+		case 175: codestr=1198; break; //capital UE
+		case 191: codestr=1199; break; //ue
+		
+		case 170: codestr=1256; break; // capital OE
+		case 186: codestr=1257; break; //oe
+	   }
+	   if (256>codestr && codestr>191) codestr=codestr+848;
+	        switch(codestr) {
+		case 1111: codestr=1199;break;   //u
+		case 1031: codestr= 1198; break; //capital U
+		
+		case 1108: codestr=1257; break; //ou
+		case 1028: codestr=1256; break; //capital OU
+		}
+           str=str+String.fromCharCode(codestr);
+      } //end for   
+   document.board.destarea.value=str;
+   if (document.all) { 
+                      document.all.DynText.innerText=str;
+   }
+   if (document.layers) {
+                   document.DynTextl.document.open();
+   		   document.DynTextl.document.fgColor = "#0000FF";
+                   document.DynTextl.document.write("<font face='Arial Unicode MS'>"+str+"</font>");
+		   document.DynTextl.document.close();
+   }
+   if (document.getElementById && !document.all) {
+                   //document.getElementById("DynText").innerText = str;
+                   document.getElementById("DynText").firstChild.data = str;
+   }
+   
+} else 
+  	if (document.board.toutf[1].checked) { //convert from unicode to win1251
+    	   for (i = 0; i < strlen;  i++) { 
+		var codestr = sourceareastr.charCodeAt(i);
+		//alert(codestr);
+		switch(codestr) {
+		case 1025: codestr=168;break; // capital EO
+		case 1105: codestr=184;break; //eo
+			
+		case 1198: codestr=175; break; //capital Ue
+		case 1199: codestr=191; break; //ue
+		
+		case 1256: codestr=170; break; // capital OE
+		case 1257: codestr=186; break; //oe
+		
+		case 415: codestr=170; break; // capital OE for Lucida sans Unicode
+		case 629: codestr=186; break; // oe for Lucida sans Unicode
+                }
+   		if (1280>codestr && codestr>1023) codestr=codestr-848; 
+   		str=str+String.fromCharCode(codestr);
+  	   }
+   document.board.destarea.value=str;
+
+   if (document.all) { 
+                       document.charset="ISO-8859-5";                        
+                       document.all.DynText.innerText=str;
+   }
+   if (document.layers) {
+                        document.DynTextl.document.open();
+  			document.DynTextl.document.fgColor = "#0000FF";
+                	document.DynTextl.document.write("<font face='Arial Mon, Verdana'>"+str+" </font>");
+			document.DynTextl.document.close();
+   }
+   if (document.getElementById && !document.all) {
+                   //document.getElementById("DynText").innerText = str;
+                    document.getElementById("DynText").firstChild.data = str;
+   }
+        }
+}
+
+function toconvertln1()
+{
+	var sourceareastr = document.board.sourcearea.value;
+	var strlen = sourceareastr.length;
+	document.board.destarea.value="";
+	var resultStr="";
+	var resultCode="";
+	mnLetter= new Array(192,193,194,195,196,197, 168, 198,199,200,201,202,203,204,205,206,170, 207,208,209,210,211,175, 212,213,214,215, 216, 217, 218,219,220,221,222, 223, 224,225,226,227,228,229, 184, 230,231,232,233,234,235,236,237,238,186, 239,240,241,242,243,191, 244,245,246,247, 248, 249, 250,251,252,253,254 ,255);
+	lnLetter= new Array("A","B","V","G","D","YE","YO","J","Z","I","I","K","L","M","N","O","OE","P","R","S","T","U","UE","F","H","C","CH","SH","SH",'"',"Y","'","E","YU","YA","a","b","v","g","d","ye","yo","j","z","i","i","k","l","m","n","o","oe","p","r","s","t","u","ue","f","h","c","ch","sh","sh",'"',"y","'","e","yu","ya");
+		
+	//latin to cryllic convert
+	if (document.board.toutf[0].checked) { 
+	 i=0;
+	 while(i<strlen) { 
+		  var charstr = sourceareastr.charAt(i);
+		  bool1=0;
+		  j=0;
+	    while (j<69 && bool1==0){
+		if (charstr=="Y") { bool2=0; bool1=1;
+		switch(sourceareastr.charAt(i+1)) {
+		case "E": resultStr+=String.fromCharCode(mnLetter[5]); resultCode+="&#"+mnLetter[5]+";"; bool2=1; break;  //YE
+		case "e": resultStr+=String.fromCharCode(mnLetter[5]); resultCode+="&#"+mnLetter[5]+";";bool2=1; break;  //Ye
+		case "O": resultStr+=String.fromCharCode(mnLetter[6]); resultCode+="&#"+mnLetter[6]+";";bool2=1; break;  //YO
+		case "o": resultStr+=String.fromCharCode(mnLetter[6]); resultCode+="&#"+mnLetter[6]+";";bool2=1; break;  //Yo
+		case "U": resultStr+=String.fromCharCode(mnLetter[33]); resultCode+="&#"+mnLetter[33]+";";bool2=1; break; //YU
+		case "u": resultStr+=String.fromCharCode(mnLetter[33]); resultCode+="&#"+mnLetter[33]+";";bool2=1; break; //Yu
+		case "A": resultStr+=String.fromCharCode(mnLetter[34]); resultCode+="&#"+mnLetter[34]+";";bool2=1; break; //YA
+		case "a": resultStr+=String.fromCharCode(mnLetter[34]); resultCode+="&#"+mnLetter[34]+";";bool2=1; break; //Ya
+		}
+	if (bool2==0) {resultStr+=String.fromCharCode(mnLetter[30]);resultCode+="&#"+mnLetter[30]+";"; bool1==1} //Y
+	               else i=i+1;  
+	} 
+	if (charstr=="y") { bool2=0; bool1=1;
+	          switch(sourceareastr.charAt(i+1)) {
+	          case "e": resultStr+=String.fromCharCode(mnLetter[40]);resultCode+="&#"+mnLetter[40]+";"; bool2=1; break;  //ye
+	          case "o": resultStr+=String.fromCharCode(mnLetter[41]);resultCode+="&#"+mnLetter[41]+";"; bool2=1; break;  //yo
+	          case "u": resultStr+=String.fromCharCode(mnLetter[68]);resultCode+="&#"+mnLetter[68]+";"; bool2=1; break; //yu
+	          case "a": resultStr+=String.fromCharCode(mnLetter[69]);resultCode+="&#"+mnLetter[69]+";"; bool2=1; break; //ya
+	          }
+	          if (bool2==0) {resultStr+=String.fromCharCode(mnLetter[65]);resultCode+="&#"+mnLetter[65]+";"; bool1==1} //y
+		                        else i=i+1;  
+		  } 
+	if (charstr=="O") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	   {resultStr+=String.fromCharCode(mnLetter[16]); resultCode+="&#"+mnLetter[16]+";";i=i+1;}//OE
+	   else 
+	   if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[15]); resultCode+="&#"+mnLetter[15]+";";
+	        resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";";i=i+1;
+	   }//OI
+		else {resultStr+=String.fromCharCode(mnLetter[15]); resultCode+="&#"+mnLetter[15]+";";} //O
+		bool1=1;
+	}
+	if (charstr=="o") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	    {resultStr+=String.fromCharCode(mnLetter[51]); resultCode+="&#"+mnLetter[51]+";"; i=i+1;}//oe
+	     else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	      resultStr+=String.fromCharCode(mnLetter[50]); resultCode+="&#"+mnLetter[50]+";"; 
+	      resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;
+	          }//oi
+	      else {resultStr+=String.fromCharCode(mnLetter[50]); resultCode+="&#"+mnLetter[5]+";";}//o
+	      bool1=1;
+	}
+	if (charstr=="U") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	        if (sourceareastr.charAt(i+2)=="i" || sourceareastr.charAt(i+2)=="I"){
+		resultStr+=String.fromCharCode(mnLetter[22]); resultCode+="&#"+mnLetter[22]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";";i=i+2;} //UEI
+		else {resultStr+=String.fromCharCode(mnLetter[22]); resultCode+="&#"+mnLetter[22]+";"; i=i+1;}//UE
+		else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I")
+		{resultStr+=String.fromCharCode(mnLetter[21]); resultCode+="&#"+mnLetter[21]+";";
+		resultStr+=String.fromCharCode(mnLetter[10]);i=i+1; resultCode+="&#"+mnLetter[10]+";";}//UI
+		else {resultStr+=String.fromCharCode(mnLetter[21]); resultCode+="&#"+mnLetter[21]+";";}//U
+		bool1=1;
+		}
+        if (charstr=="u") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	        if (sourceareastr.charAt(i+2)=="i" || sourceareastr.charAt(i+2)=="I"){
+	        resultStr+=String.fromCharCode(mnLetter[57]);resultCode+="&#"+mnLetter[57]+";"; 
+	        resultStr+=String.fromCharCode(mnLetter[45]);resultCode+="&#"+mnLetter[45]+";"; i=i+2;} //uei
+	        else {resultStr+=String.fromCharCode(mnLetter[57]); resultCode+="&#"+mnLetter[57]+";"; i=i+1;}//ue
+	        else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I")
+	        {resultStr+=String.fromCharCode(mnLetter[56]); resultCode+="&#"+mnLetter[56]+";"; 
+	        resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";";i=i+1;}//ui
+	        else resultStr+=String.fromCharCode(mnLetter[56]);resultCode+="&#"+mnLetter[56]+";"; //u
+	        bool1=1;
+	}
+	if (charstr=="C") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H"){
+	        resultStr+=String.fromCharCode(mnLetter[26]); resultCode+="&#"+mnLetter[26]+";"; i=i+1;}//CH
+		else { resultStr+=String.fromCharCode(mnLetter[25]); resultCode+="&#"+mnLetter[25]+";";} //C
+		bool1=1;
+        }
+	if (charstr=="c") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H"){
+	        resultStr+=String.fromCharCode(mnLetter[61]); resultCode+="&#"+mnLetter[61]+";"; i=i+1;}//ch
+	        else {resultStr+=String.fromCharCode(mnLetter[60]);resultCode+="&#"+mnLetter[60]+";";} //c
+	        bool1=1;
+	}
+	if (charstr=="T") { if (sourceareastr.charAt(i+1)=="s" || sourceareastr.charAt(i+1)=="S"){
+	        resultStr+=String.fromCharCode(mnLetter[25]); resultCode+="&#"+mnLetter[25]+";";i=i+1;}//TS
+		else { resultStr+=String.fromCharCode(mnLetter[20]); resultCode+="&#"+mnLetter[20]+";";} //T
+		bool1=1;
+        }
+	if (charstr=="t") { if (sourceareastr.charAt(i+1)=="s" || sourceareastr.charAt(i+1)=="S"){
+	        resultStr+=String.fromCharCode(mnLetter[60]); resultCode+="&#"+mnLetter[60]+";"; i=i+1;}//ts
+	        else {resultStr+=String.fromCharCode(mnLetter[55]); resultCode+="&#"+mnLetter[55]+";";}//t
+	        bool1=1;
+	}
+	if (charstr=="S") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H") {
+	        resultStr+=String.fromCharCode(mnLetter[27]);resultCode+="&#"+mnLetter[27]+";"; i=i+1;}//SH
+		else { resultStr+=String.fromCharCode(mnLetter[19]); resultCode+="&#"+mnLetter[19]+";";}//S
+		bool1=1;
+        }
+	if (charstr=="s") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H") {
+	        resultStr+=String.fromCharCode(mnLetter[62]); resultCode+="&#"+mnLetter[62]+";"; i=i+1;}//sh
+		else { resultStr+=String.fromCharCode(mnLetter[54]); resultCode+="&#"+mnLetter[54]+";";} //s
+		bool1=1;
+        }
+        if (charstr=="'") {resultStr+=String.fromCharCode(mnLetter[66]); resultCode+="&#"+mnLetter[66]+";"; //zoeoeloen temdeg
+                           bool1=1;
+        }
+        if (charstr=='"') {resultStr+=String.fromCharCode(mnLetter[64]); resultCode+="&#"+mnLetter[64]+";"; //zoeoeloen temdeg
+                           bool1=1;
+        }
+        if (charstr=="A") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+                resultStr+=String.fromCharCode(mnLetter[0]); resultCode+="&#"+mnLetter[0]+";";
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+1;}//AI
+		//else bol A
+		bool1=1;
+	}
+	if (charstr=="a") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[35]); resultCode+="&#"+mnLetter[35]+";";
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ai
+		else { resultStr+=String.fromCharCode(mnLetter[35]); resultCode+="&#"+mnLetter[35]+";";}//a
+		bool1=1;
+	}
+	if (charstr=="I") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[9]); resultCode+="&#"+mnLetter[9]+";";
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//II
+		else { resultStr+=String.fromCharCode(mnLetter[9]); resultCode+="&#"+mnLetter[9]+";";}//I
+		bool1=1;
+	}
+	if (charstr=="i") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[44]); resultCode+="&#"+mnLetter[44]+";";
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ii
+		else { resultStr+=String.fromCharCode(mnLetter[44]); resultCode+="&#"+mnLetter[44]+";";}//i
+		bool1=1;
+	}
+	if (charstr=="E") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[32]); resultCode+="&#"+mnLetter[32]+";";
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";";i=i+1;}//EI
+		else { resultStr+=String.fromCharCode(mnLetter[32]); resultCode+="&#"+mnLetter[5]+";";} //E
+		bool1=1;
+	}
+	if (charstr=="e") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	    resultStr+=String.fromCharCode(mnLetter[67]); resultCode+="&#"+mnLetter[67]+";";
+	    resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";";i=i+1;}//ei
+	    else { resultStr+=String.fromCharCode(mnLetter[67]); resultCode+="&#"+mnLetter[67]+";";}//e
+	    bool1=1;
+	}
+	if (charstr=="W") {resultStr+=String.fromCharCode(mnLetter[2]); resultCode+="&#"+mnLetter[2]+";";
+	                   bool1=1;
+	}
+        if (charstr=="w") {resultStr+=String.fromCharCode(mnLetter[37]); resultCode+="&#"+mnLetter[37]+";";
+	                   bool1=1;
+	}
+	if (charstr==lnLetter[j]) {resultStr+= String.fromCharCode(mnLetter[j]); resultCode+="&#"+mnLetter[j]+";"; bool1=1;}
+	    j++;
+	} //While j end
+	if (bool1==0) { if (charstr=="[") while(sourceareastr.charAt(i)!="]" && i<strlen){
+	                          	   resultStr+=sourceareastr.charAt(i); resultCode+=sourceareastr.charAt(i); 
+	                                   i++;
+	                                  }
+		       resultStr+=sourceareastr.charAt(i); resultCode+=sourceareastr.charAt(i); 
+        }
+		       
+	    i++;
+       } //while i end
+
+       document.board.destarea.value=resultCode;    
+       if (document.all) { 
+           document.all.DynText.innerText=resultStr;
+       } else
+       if (document.layers) {
+                        document.DynTextl.document.open();
+  			document.DynTextl.document.fgColor = "#0000FF";
+                	document.DynTextl.document.write("<font face='Arial Mon, Verdana'>"+resultStr+"</font>");
+			document.DynTextl.document.close();
+        } else
+        if (document.getElementById && !document.all) {
+                   //document.getElementById("DynText").innerText = resultStr;
+                   document.getElementById("DynText").firstChild.data = resultStr;
+        }
+ } else {	
+	      if (document.board.toutf[1].checked) {
+		for (i = 0; i < strlen;  i++) { 
+		  var codestr = sourceareastr.charCodeAt(i);
+		  bool=0; j=0;
+		  while (j<70 && bool==0) {
+		  if (codestr==mnLetter[j]) { resultStr+=lnLetter[j]; bool=1;}
+		  j++;
+		  }
+		  if (bool==0) resultStr+=sourceareastr.charAt(i);
+		}
+	      }
+	     document.board.destarea.value=resultStr;    
+	     if (document.all) { 
+                       document.all.DynText.innerText=resultStr;
+             }
+   	       if (document.layers) {
+                        document.DynTextl.document.open();
+  			document.DynTextl.document.fgColor = "#0000FF";
+                	document.DynTextl.document.write("<font face='Arial Mon, Verdana'>"+resultStr+"</font>");
+			document.DynTextl.document.close();
+               }
+               if (document.getElementById && !document.all) {
+                  // document.getElementById("DynText").innerText = resultStr;
+                    document.getElementById("DynText").firstChild.data = resultStr;
+               }
+          }
+}
+
+function toconvertln2()
+{
+	var sourceareastr = document.board.sourcearea.value;
+	var strlen = sourceareastr.length;
+	document.board.destarea.value="";
+	var resultStr="";
+	var resultCode="";
+	mnLetter= new Array(1040,1041,1042,1043,1044,1045,1025,1046,1047,1048,1049,1050,1051,1052,1053,1054,1256,1055,1056,1057,1058,1059,1198,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1105,1078,1079,1080,1081,1082,1083,1084,1085,1086,1257,1087,1088,1089,1090,1091,1199,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103);
+	lnLetter= new Array("A","B","V","G","D","YE","YO","J","Z","I","I","K","L","M","N","O","OE","P","R","S","T","U","UE","F","H","C","CH","SH","SH",'"',"Y","'","E","YU","YA","a","b","v","g","d","ye","yo","j","z","i","i","k","l","m","n","o","oe","p","r","s","t","u","ue","f","h","c","ch","sh","sh",'"',"y","'","e","yu","ya");
+		
+	//latin to cryllic convert
+	if (document.board.toutf[0].checked) { 
+	 i=0;
+	 while(i<strlen) { 
+		  var charstr = sourceareastr.charAt(i);
+		  bool1=0;
+		  j=0;
+	    while (j<69 && bool1==0){
+	    	if (charstr=="Y") { bool2=0; bool1=1;
+		switch(sourceareastr.charAt(i+1)) {
+		case "E": resultStr+=String.fromCharCode(mnLetter[5]); resultCode+="&#"+mnLetter[5]+";"; bool2=1; break;  //YE
+		case "e": resultStr+=String.fromCharCode(mnLetter[5]); resultCode+="&#"+mnLetter[5]+";"; bool2=1; break;  //Ye
+		case "O": resultStr+=String.fromCharCode(mnLetter[6]); resultCode+="&#"+mnLetter[6]+";"; bool2=1; break;  //YO
+		case "o": resultStr+=String.fromCharCode(mnLetter[6]); resultCode+="&#"+mnLetter[6]+";"; bool2=1; break;  //Yo
+		case "U": resultStr+=String.fromCharCode(mnLetter[33]); resultCode+="&#"+mnLetter[33]+";"; bool2=1; break; //YU
+		case "u": resultStr+=String.fromCharCode(mnLetter[33]); resultCode+="&#"+mnLetter[33]+";"; bool2=1; break; //Yu
+		case "A": resultStr+=String.fromCharCode(mnLetter[34]); resultCode+="&#"+mnLetter[34]+";"; bool2=1; break; //YA
+		case "a": resultStr+=String.fromCharCode(mnLetter[34]); resultCode+="&#"+mnLetter[34]+";"; bool2=1; break; //Ya
+		}
+	if (bool2==0) {resultStr+=String.fromCharCode(mnLetter[30]); resultCode+="&#"+mnLetter[30]+";"; bool1==1} //Y
+	               else i=i+1;  
+	} 
+	if (charstr=="y") { bool2=0; bool1=1;
+	          switch(sourceareastr.charAt(i+1)) {
+	          case "e": resultStr+=String.fromCharCode(mnLetter[40]); resultCode+="&#"+mnLetter[40]+";"; bool2=1; break;  //ye
+	          case "o": resultStr+=String.fromCharCode(mnLetter[41]); resultCode+="&#"+mnLetter[41]+";"; bool2=1; break;  //yo
+	          case "u": resultStr+=String.fromCharCode(mnLetter[68]); resultCode+="&#"+mnLetter[68]+";"; bool2=1; break; //yu
+	          case "a": resultStr+=String.fromCharCode(mnLetter[69]); resultCode+="&#"+mnLetter[69]+";"; bool2=1; break; //ya
+	          }
+	          if (bool2==0) {resultStr+=String.fromCharCode(mnLetter[65]); resultCode+="&#"+mnLetter[65]+";"; bool1==1} //y
+		                        else i=i+1;  
+		  } 
+	if (charstr=="O") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	   {resultStr+=String.fromCharCode(mnLetter[16]); resultCode+="&#"+mnLetter[16]+";"; i=i+1;}//OE
+	   else 
+	   if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[15]); resultCode+="&#"+mnLetter[15]+";"; 
+	        resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+1;
+	   }//OI
+		else { resultStr+=String.fromCharCode(mnLetter[15]); resultCode+="&#"+mnLetter[15]+";"; }//O
+		bool1=1;
+	}
+	if (charstr=="o") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	    {resultStr+=String.fromCharCode(mnLetter[51]); resultCode+="&#"+mnLetter[51]+";"; i=i+1;}//oe
+	     else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	      resultStr+=String.fromCharCode(mnLetter[50]); resultCode+="&#"+mnLetter[50]+";"; 
+	      resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;
+	          }//oi
+	      else { resultStr+=String.fromCharCode(mnLetter[50]); resultCode+="&#"+mnLetter[50]+";"; }//o
+	      bool1=1;
+	}
+	if (charstr=="U") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	        if (sourceareastr.charAt(i+2)=="i" || sourceareastr.charAt(i+2)=="I"){
+		resultStr+=String.fromCharCode(mnLetter[22]); resultCode+="&#"+mnLetter[22]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+2;} //UEI
+		else {resultStr+=String.fromCharCode(mnLetter[22]); resultCode+="&#"+mnLetter[22]+";"; i=i+1;}//UE
+		else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I")
+		{resultStr+=String.fromCharCode(mnLetter[21]); resultCode+="&#"+mnLetter[21]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+1;}//UI
+		else { resultStr+=String.fromCharCode(mnLetter[21]); resultCode+="&#"+mnLetter[21]+";"; }//U
+		bool1=1;
+		}
+        if (charstr=="u") { if (sourceareastr.charAt(i+1)=="e" || sourceareastr.charAt(i+1)=="E")
+	        if (sourceareastr.charAt(i+2)=="i" || sourceareastr.charAt(i+2)=="I"){
+	        resultStr+=String.fromCharCode(mnLetter[57]); resultCode+="&#"+mnLetter[57]+";"; 
+	        resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+2;} //uei
+	        else {resultStr+=String.fromCharCode(mnLetter[57]); resultCode+="&#"+mnLetter[57]+";"; i=i+1;}//ue
+	        else if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I")
+	        {resultStr+=String.fromCharCode(mnLetter[56]); resultCode+="&#"+mnLetter[56]+";"; 
+	        resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ui
+	        else { resultStr+=String.fromCharCode(mnLetter[56]); resultCode+="&#"+mnLetter[56]+";"; }//u
+	        bool1=1;
+	}
+	if (charstr=="C") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H"){
+	        resultStr+=String.fromCharCode(mnLetter[26]); resultCode+="&#"+mnLetter[26]+";"; i=i+1; }//CH
+		else {resultStr+=String.fromCharCode(mnLetter[25]); resultCode+="&#"+mnLetter[25]+";"; }//C
+		bool1=1;
+        }
+	if (charstr=="c") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H"){
+	        resultStr+=String.fromCharCode(mnLetter[61]); resultCode+="&#"+mnLetter[61]+";"; i=i+1; }//ch
+	        else { resultStr+=String.fromCharCode(mnLetter[60]); resultCode+="&#"+mnLetter[60]+";"; }//c
+	        bool1=1;
+	}
+	if (charstr=="T") { if (sourceareastr.charAt(i+1)=="s" || sourceareastr.charAt(i+1)=="S"){
+	        resultStr+=String.fromCharCode(mnLetter[25]); resultCode+="&#"+mnLetter[25]+";"; i=i+1;}//TS
+		else {resultStr+=String.fromCharCode(mnLetter[20]); resultCode+="&#"+mnLetter[20]+";"; }//T
+		bool1=1;
+        }
+	if (charstr=="t") { if (sourceareastr.charAt(i+1)=="s" || sourceareastr.charAt(i+1)=="S"){
+	        resultStr+=String.fromCharCode(mnLetter[60]); resultCode+="&#"+mnLetter[60]+";"; i=i+1;}//ts
+	        else {resultStr+=String.fromCharCode(mnLetter[55]); resultCode+="&#"+mnLetter[55]+";"; }//t
+	        bool1=1;
+	}
+	if (charstr=="S") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H") {
+	        resultStr+=String.fromCharCode(mnLetter[27]); resultCode+="&#"+mnLetter[27]+";"; i=i+1;}//SH
+		else { resultStr+=String.fromCharCode(mnLetter[19]); resultCode+="&#"+mnLetter[19]+";";  }//S
+		bool1=1;
+        }
+	if (charstr=="s") { if (sourceareastr.charAt(i+1)=="h" || sourceareastr.charAt(i+1)=="H") {
+	        resultStr+=String.fromCharCode(mnLetter[62]); resultCode+="&#"+mnLetter[62]+";"; i=i+1;}//sh
+		else {resultStr+=String.fromCharCode(mnLetter[54]); resultCode+="&#"+mnLetter[54]+";"; }//s
+		bool1=1;
+        }
+        if (charstr=="'") {resultStr+=String.fromCharCode(mnLetter[66]); resultCode+="&#"+mnLetter[66]+";"; //zoeoeloen temdeg
+                           bool1=1;
+        }
+        if (charstr=='"') {resultStr+=String.fromCharCode(mnLetter[64]); resultCode+="&#"+mnLetter[64]+";"; //hatuu temdeg
+                           bool1=1;
+        }
+        if (charstr=="A") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+                resultStr+=String.fromCharCode(mnLetter[0]); resultCode+="&#"+mnLetter[0]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+1;}//AI
+		//else bol A
+		bool1=1;
+	}
+	if (charstr=="a") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[35]); resultCode+="&#"+mnLetter[35]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ai
+		else { resultStr+=String.fromCharCode(mnLetter[35]); resultCode+="&#"+mnLetter[35]+";"; }//a
+		bool1=1;
+	}
+	if (charstr=="I") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[9]); resultCode+="&#"+mnLetter[9]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//II
+		else { resultStr+=String.fromCharCode(mnLetter[9]); resultCode+="&#"+mnLetter[9]+";"; }//I
+		bool1=1;
+	}
+	if (charstr=="i") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[44]); resultCode+="&#"+mnLetter[44]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ii
+		else { resultStr+=String.fromCharCode(mnLetter[44]); resultCode+="&#"+mnLetter[44]+";"; }//i
+		bool1=1;
+	}
+	if (charstr=="E") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	        resultStr+=String.fromCharCode(mnLetter[32]); resultCode+="&#"+mnLetter[32]+";"; 
+		resultStr+=String.fromCharCode(mnLetter[10]); resultCode+="&#"+mnLetter[10]+";"; i=i+1;}//EI
+		else { resultStr+=String.fromCharCode(mnLetter[32]); resultCode+="&#"+mnLetter[32]+";"; }//E
+		bool1=1;
+	}
+	if (charstr=="e") { if (sourceareastr.charAt(i+1)=="i" || sourceareastr.charAt(i+1)=="I") {
+	    resultStr+=String.fromCharCode(mnLetter[67]); resultCode+="&#"+mnLetter[67]+";"; 
+	    resultStr+=String.fromCharCode(mnLetter[45]); resultCode+="&#"+mnLetter[45]+";"; i=i+1;}//ei
+	    else {resultStr+=String.fromCharCode(mnLetter[67]); resultCode+="&#"+mnLetter[67]+";"; }//e
+	    bool1=1;
+	}
+	if (charstr=="W") {resultStr+=String.fromCharCode(mnLetter[2]); resultCode+="&#"+mnLetter[2]+";"; 
+	                   bool1=1;
+	}
+        if (charstr=="w") {resultStr+=String.fromCharCode(mnLetter[37]); resultCode+="&#"+mnLetter[37]+";"; 
+	                   bool1=1;
+	}
+	if (charstr==lnLetter[j]) {resultStr+= String.fromCharCode(mnLetter[j]); resultCode+="&#"+mnLetter[j]+";"; bool1=1;}
+	    j++;
+	} // while j end
+	if (bool1==0) { if (charstr=="[") while(sourceareastr.charAt(i)!="]" && i<strlen){
+	                          	   resultStr+=sourceareastr.charAt(i); resultCode+=sourceareastr.charAt(i); 
+	                                   i++;
+	                                  }
+		       resultStr+=sourceareastr.charAt(i); resultCode+=sourceareastr.charAt(i); }
+	   i++;
+       } //while i end
+
+       document.board.destarea.value=resultCode;    
+       if (document.all) { 
+           document.all.DynText.innerText=resultStr;
+       }
+       if (document.layers) {
+                        document.DynTextl.document.open();
+  			document.DynTextl.document.fgColor = "#0000FF";
+                	document.DynTextl.document.write("<font face='Microsoft Sans Serif, Arial Unicode MS, Verdana'>"+resultStr+"</font>");
+			document.DynTextl.document.close();
+        }
+        if (document.getElementById && !document.all) {
+                   //document.getElementById("DynText").innerText = resultStr;
+                   document.getElementById("DynText").firstChild.data = resultStr; 
+        }
+ } else {	
+	      if (document.board.toutf[1].checked) {
+		for (i = 0; i < strlen;  i++) { 
+		  var codestr = sourceareastr.charCodeAt(i);
+		  bool=0; j=0;
+		  while (j<70 && bool==0) {
+		  if (codestr==mnLetter[j]) { resultStr+=lnLetter[j]; bool=1;}
+		  j++;
+		  }
+		  if (bool==0) resultStr+=sourceareastr.charAt(i);
+		}
+	      }
+	     document.board.destarea.value=resultStr;    
+	     if (document.all) { 
+                       document.all.DynText.innerText=resultStr;
+             }
+   	       if (document.layers) {
+                        document.DynTextl.document.open();
+  			document.DynTextl.document.fgColor = "#0000FF";
+                	document.DynTextl.document.write("<font face='Microsoft Sans Serif, Arial Unicode MS, Verdana'>"+resultStr+"</font>");
+			document.DynTextl.document.close();
+               }
+               if (document.getElementById && !document.all) {
+                   //document.getElementById("DynText").innerText = resultStr;
+                   document.getElementById("DynText").firstChild.data = resultStr;
+               }
+          }
+}
+  //-->
+</SCRIPT>  <SCRIPT language=JavaScript src="Unicode Converter_files/convert.js"></SCRIPT>
+<form name="board" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td><textarea onclick="this.select();" style="font-size: 10pt; font-family: Arial Unicode MS,Microsoft Sans Serif;" name="sourcearea" rows="10" cols="40" size="44"></textarea>        <br />
+                </td>
+                <td><font face="Verdana,Helvetica" size="1"><input type="radio" checked="" value="win12512u" name="toutf" />Windows-1251--&gt;Unicode(cyr)<br />
+                <input type="radio" value="u2win1251" name="toutf" />Unicode(cyr)--&gt;Windows-1251<br />
+                <br />
+                <div align="center"><input type="button" onclick="toconvert()" value="Convert" name="convert" /></div>
+                <br />
+                </font></td>
+                <td><textarea onclick="this.select();" style="font-size: 10pt; font-family: Arial Unicode MS,Microsoft Sans Serif;" name="destarea" rows="10" cols="40" size="44"></textarea>    </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr noshade="" size="1" />
+    <center></center>
+    <p style="font-size: 10pt; color: blue; font-family: Arial MS Unicode,Microsoft Sans Serif;" id="DynText">	</p>
+    <layer name="DynTextl"></layer>
+</form>
+</div>

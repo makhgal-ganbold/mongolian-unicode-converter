@@ -1,0 +1,1050 @@
+Sub Arial_to_ArialMon()
+
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+While (i <= Max)
+    uni_code = AscW(Char)
+    Select Case (uni_code)
+    
+    Case 1025
+        ascii_code = 168
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1028
+        ascii_code = 170
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1256
+        ascii_code = 170
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1198
+        ascii_code = 175
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1031
+        ascii_code = 175
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1105
+        ascii_code = 184
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1108
+        ascii_code = 186
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1257
+        ascii_code = 186
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1111
+        ascii_code = 191
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1199
+        ascii_code = 191
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case 1040 To 1103
+        ascii_code = uni_code - 848
+        Selection.TypeText Text:=ChrW(ascii_code)
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+End Sub
+
+Sub ArialMon_to_Arial()
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+
+While (i <= Max)
+    
+    acsii_code = AscW(Char)
+    Select Case (acsii_code)
+    
+    Case 168
+        uni_code = 1025
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 170
+        uni_code = 1256
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 175
+        uni_code = 1198
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 184
+        uni_code = 1105
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 186
+        uni_code = 1257
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 191
+        uni_code = 1199
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case 192 To 255
+        uni_code = acsii_code + 848
+        Selection.TypeText Text:=ChrW(uni_code)
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+    
+End Sub
+
+Sub Danzan_to_ArialMon()
+
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+
+While (i <= Max)
+    asc_code = Asc(Char)
+    Select Case (asc_code)
+    Case 61
+        ascii_code = 249
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 45
+        ascii_code = 229
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 47
+        ascii_code = 254
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 46
+        ascii_code = 226
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 44
+        ascii_code = 252
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 109
+        ascii_code = 242
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 110
+        ascii_code = 232
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 98
+        ascii_code = 236
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 118
+        ascii_code = 241
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 99
+        ascii_code = 184
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 120
+        ascii_code = 247
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 122
+        ascii_code = 255
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 97
+        ascii_code = 233
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 115
+        ascii_code = 251
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 100
+        ascii_code = 225
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 102
+        ascii_code = 186
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 103
+        ascii_code = 224
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 104
+        ascii_code = 245
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 106
+        ascii_code = 240
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 107
+        ascii_code = 238
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 108
+        ascii_code = 235
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 59
+        ascii_code = 228
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 146
+        ascii_code = 239
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 93
+        ascii_code = 250
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 91
+        ascii_code = 234
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 112
+        ascii_code = 231
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 111
+        ascii_code = 191
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 105
+        ascii_code = 248
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 117
+        ascii_code = 227
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 121
+        ascii_code = 237
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 116
+        ascii_code = 253
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 114
+        ascii_code = 230
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 101
+        ascii_code = 243
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 119
+        ascii_code = 246
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 113
+        ascii_code = 244
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 43
+        ascii_code = 217
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 95
+        ascii_code = 197
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 63
+        ascii_code = 222
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 62
+        ascii_code = 194
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 60
+        ascii_code = 220
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 77
+        ascii_code = 210
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 78
+        ascii_code = 200
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 66
+        ascii_code = 204
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 86
+        ascii_code = 209
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 67
+        ascii_code = 168
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 88
+        ascii_code = 215
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 90
+        ascii_code = 223
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 65
+        ascii_code = 201
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 83
+        ascii_code = 219
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 68
+        ascii_code = 193
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 70
+        ascii_code = 170
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 71
+        ascii_code = 192
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 72
+        ascii_code = 213
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 74
+        ascii_code = 208
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 75
+        ascii_code = 206
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 76
+        ascii_code = 203
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 58
+        ascii_code = 196
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 148
+        ascii_code = 207
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 125
+        ascii_code = 218
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 123
+        ascii_code = 202
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 80
+        ascii_code = 199
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 79
+        ascii_code = 175
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 73
+        ascii_code = 216
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 85
+        ascii_code = 195
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 89
+        ascii_code = 205
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 84
+        ascii_code = 221
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 82
+        ascii_code = 198
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 69
+        ascii_code = 211
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 87
+        ascii_code = 214
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 81
+        ascii_code = 212
+        Selection.TypeText Text:=Chr(ascii_code)
+    
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+End Sub
+
+Sub Montimes_to_ArialMon()
+
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+
+While (i <= Max)
+    asc_code = Asc(Char)
+    Select Case (asc_code)
+    Case 186
+        ascii_code = 192
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 187
+        ascii_code = 193
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 188
+        ascii_code = 194
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 189
+        ascii_code = 195
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 190
+        ascii_code = 196
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 191
+        ascii_code = 197
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 192
+        ascii_code = 168
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 193
+        ascii_code = 198
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 194
+        ascii_code = 199
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 195
+        ascii_code = 200
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 196
+        ascii_code = 201
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 197
+        ascii_code = 202
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 198
+        ascii_code = 203
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 199
+        ascii_code = 204
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 200
+        ascii_code = 205
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 201
+        ascii_code = 206
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 202
+        ascii_code = 170
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 203
+        ascii_code = 207
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 204
+        ascii_code = 208
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 205
+        ascii_code = 209
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 206
+        ascii_code = 210
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 207
+        ascii_code = 211
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 208
+        ascii_code = 175
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 209
+        ascii_code = 212
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 210
+        ascii_code = 213
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 211
+        ascii_code = 214
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 212
+        ascii_code = 215
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 213
+        ascii_code = 216
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 214
+        ascii_code = 217
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 215
+        ascii_code = 218
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 216
+        ascii_code = 219
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 217
+        ascii_code = 220
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 218
+        ascii_code = 221
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 219
+        ascii_code = 222
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 220
+        ascii_code = 223
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 221
+        ascii_code = 224
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 222
+        ascii_code = 225
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 223
+        ascii_code = 226
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 224
+        ascii_code = 227
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 225
+        ascii_code = 228
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 226
+        ascii_code = 229
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 227
+        ascii_code = 184
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 228
+        ascii_code = 230
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 229
+        ascii_code = 231
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 230
+        ascii_code = 232
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 231
+        ascii_code = 233
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 232
+        ascii_code = 234
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 233
+        ascii_code = 235
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 234
+        ascii_code = 236
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 235
+        ascii_code = 237
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 236
+        ascii_code = 238
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 237
+        ascii_code = 186
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 238
+        ascii_code = 239
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 239
+        ascii_code = 240
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 240
+        ascii_code = 241
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 241
+        ascii_code = 242
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 242
+        ascii_code = 243
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 243
+        ascii_code = 191
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 244
+        ascii_code = 244
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 245
+        ascii_code = 245
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 246
+        ascii_code = 246
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 247
+        ascii_code = 247
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 248
+        ascii_code = 248
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 249
+        ascii_code = 249
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 250
+        ascii_code = 250
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 251
+        ascii_code = 251
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 252
+        ascii_code = 252
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 253
+        ascii_code = 253
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 254
+        ascii_code = 254
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 255
+        ascii_code = 255
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+End Sub
+
+Sub ArialMon_to_Montimes()
+
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+
+While (i <= Max)
+    asc_code = Asc(Char)
+    Select Case (asc_code)
+    Case 192
+        ascii_code = 186
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 193
+        ascii_code = 187
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 194
+        ascii_code = 188
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 195
+        ascii_code = 189
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 196
+        ascii_code = 190
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 197
+        ascii_code = 191
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 168
+        ascii_code = 192
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 198
+        ascii_code = 193
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 199
+        ascii_code = 194
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 200
+        ascii_code = 195
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 201
+        ascii_code = 196
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 202
+        ascii_code = 197
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 203
+        ascii_code = 198
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 204
+        ascii_code = 199
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 205
+        ascii_code = 200
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 206
+        ascii_code = 201
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 170
+        ascii_code = 202
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 207
+        ascii_code = 203
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 208
+        ascii_code = 204
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 209
+        ascii_code = 205
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 210
+        ascii_code = 206
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 211
+        ascii_code = 207
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 175
+        ascii_code = 208
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 212
+        ascii_code = 209
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 213
+        ascii_code = 210
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 214
+        ascii_code = 211
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 215
+        ascii_code = 212
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 216
+        ascii_code = 213
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 217
+        ascii_code = 214
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 218
+        ascii_code = 215
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 219
+        ascii_code = 216
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 220
+        ascii_code = 217
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 221
+        ascii_code = 218
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 222
+        ascii_code = 219
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 223
+        ascii_code = 220
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 224
+        ascii_code = 221
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 225
+        ascii_code = 222
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 226
+        ascii_code = 223
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 227
+        ascii_code = 224
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 228
+        ascii_code = 225
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 229
+        ascii_code = 226
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 184
+        ascii_code = 227
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 230
+        ascii_code = 228
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 231
+        ascii_code = 229
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 232
+        ascii_code = 230
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 233
+        ascii_code = 231
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 234
+        ascii_code = 232
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 235
+        ascii_code = 233
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 236
+        ascii_code = 234
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 237
+        ascii_code = 235
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 238
+        ascii_code = 236
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 186
+        ascii_code = 237
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 239
+        ascii_code = 238
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 240
+        ascii_code = 239
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 241
+        ascii_code = 240
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 242
+        ascii_code = 241
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 243
+        ascii_code = 242
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 191
+        ascii_code = 243
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 244
+        ascii_code = 244
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 245
+        ascii_code = 245
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 246
+        ascii_code = 246
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 247
+        ascii_code = 247
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 248
+        ascii_code = 248
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 249
+        ascii_code = 249
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 250
+        ascii_code = 250
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 251
+        ascii_code = 251
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 252
+        ascii_code = 252
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 253
+        ascii_code = 253
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 254
+        ascii_code = 254
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 255
+        ascii_code = 255
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+End Sub
+
+Sub dos2arial()
+
+Max = ActiveDocument.Characters.Count
+Selection.HomeKey Unit:=wdStory
+
+i = 1
+r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+Char = Selection.Text
+
+While (i <= Max)
+    asc_code = Asc(Char)
+    Select Case (asc_code)
+    Case 128
+        ascii_code = 192
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 129
+        ascii_code = 193
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 130
+        ascii_code = 194
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 131
+        ascii_code = 195
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 132
+        ascii_code = 196
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 133
+        ascii_code = 197
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 134
+        ascii_code = 168
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 135
+        ascii_code = 198
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 136
+        ascii_code = 199
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 137
+        ascii_code = 200
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 139
+        ascii_code = 201
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 140
+        ascii_code = 202
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 63
+        ascii_code = 203
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 142
+        ascii_code = 203
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 143
+        ascii_code = 204
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 144
+        ascii_code = 205
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 145
+        ascii_code = 206
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 146
+        ascii_code = 170
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 147
+        ascii_code = 207
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 148
+        ascii_code = 208
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 149
+        ascii_code = 209
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 150
+        ascii_code = 210
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 151
+        ascii_code = 211
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 149
+        ascii_code = 175
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 152
+        ascii_code = 175
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 153
+        ascii_code = 212
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 154
+        ascii_code = 213
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 155
+        ascii_code = 214
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 156
+        ascii_code = 215
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 157
+        ascii_code = 216
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 158
+        ascii_code = 217
+        Selection.TypeText Text:=Chr(ascii_code)
+   ' Case 13
+   '     ascii_code = 217
+   '     Selection.TypeText Text:=Chr(ascii_code)
+    Case 159
+        ascii_code = 218
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 160
+        ascii_code = 219
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 161
+        ascii_code = 220
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 162
+        ascii_code = 221
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 163
+        ascii_code = 222
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 164
+        ascii_code = 223
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 165
+        ascii_code = 224
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 166
+        ascii_code = 225
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 167
+        ascii_code = 226
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 168
+        ascii_code = 227
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 169
+        ascii_code = 228
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 170
+        ascii_code = 229
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 171
+        ascii_code = 184
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 172
+        ascii_code = 230
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 173
+        ascii_code = 231
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 174
+        ascii_code = 232
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 175
+        ascii_code = 233
+        Selection.TypeText Text:=Chr(ascii_code)
+    'Case 22
+    '    ascii_code = 234
+    '    Selection.TypeText Text:=Chr(ascii_code)
+    'Case 226
+    '    ascii_code = 235
+    '    Selection.TypeText Text:=Chr(ascii_code)
+    Case 225
+        ascii_code = 232
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 226
+        ascii_code = 233
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 227
+        ascii_code = 234
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 228
+        ascii_code = 235
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 229
+        ascii_code = 236
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 230
+        ascii_code = 237
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 231
+        ascii_code = 238
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 232
+        ascii_code = 186
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 233
+        ascii_code = 239
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 234
+        ascii_code = 240
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 235
+        ascii_code = 241
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 236
+        ascii_code = 242
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 237
+        ascii_code = 243
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 238
+        ascii_code = 191
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 239
+        ascii_code = 244
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 240
+        ascii_code = 245
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 241
+        ascii_code = 246
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 242
+        ascii_code = 247
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 243
+        ascii_code = 248
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 244
+        ascii_code = 249
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 245
+        ascii_code = 250
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 246
+        ascii_code = 251
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 247
+        ascii_code = 252
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 248
+        ascii_code = 253
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 249
+        ascii_code = 254
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case 251
+        ascii_code = 255
+        Selection.TypeText Text:=Chr(ascii_code)
+    Case Else
+       r = Selection.MoveRight(wdCharacter, 1, wdMove)
+    End Select
+    
+    i = i + 1
+    r = Selection.MoveRight(wdCharacter, 1, wdExtend)
+    Char = Selection.Text
+Wend
+End Sub
+Sub newm()
+  MsgBox (ChrW(1041))
+End Sub
+
+

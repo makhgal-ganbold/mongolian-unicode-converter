@@ -1,0 +1,73 @@
+Sub ASCII_2_UNICODE()
+Dim i As Long
+Dim x() As Integer
+Dim text As String
+For Each c In Worksheets(ActiveSheet.Name).Range(ActiveWindow.RangeSelection.Address)
+    text = ""
+    For i = 1 To Len(c.Value)
+        Char = Mid(c.Value, i, 1)
+        acsii_code = AscW(Char)
+        Select Case (acsii_code)
+            Case 168
+                text = text + ChrW(1025)
+            Case 170
+                text = text + ChrW(1256)
+            Case 175
+                text = text + ChrW(1198)
+            Case 184
+                text = text + ChrW(1105)
+            Case 186
+                text = text + ChrW(1257)
+            Case 191
+                text = text + ChrW(1199)
+            Case 192 To 255
+                text = text + ChrW(acsii_code + 848)
+            Case Else
+                text = text + Char
+        End Select
+    Next
+    c.Value = text
+Next
+MsgBox "Convertion complete."
+End Sub
+
+Sub UNICODE_2_ASCII()
+Dim i As Long
+Dim x() As Integer
+Dim text As String
+For Each c In Worksheets(ActiveSheet.Name).Range(ActiveWindow.RangeSelection.Address)
+    text = ""
+    For i = 1 To Len(c.Value)
+        Char = Mid(c.Value, i, 1)
+        uni_code = AscW(Char)
+        Select Case (uni_code)
+            Case 1025
+                text = text + ChrW(168)
+            Case 1028
+                text = text + ChrW(170)
+            Case 1256
+                text = text + ChrW(170)
+            Case 1198
+                text = text + ChrW(175)
+            Case 1031
+                text = text + ChrW(175)
+            Case 1105
+                text = text + ChrW(184)
+            Case 1108
+                text = text + ChrW(186)
+            Case 1257
+                text = text + ChrW(186)
+            Case 1111
+                text = text + ChrW(191)
+            Case 1199
+                text = text + ChrW(191)
+            Case 1040 To 1103
+                text = text + ChrW(uni_code - 848)
+            Case Else
+                text = text + Char
+        End Select
+    Next
+    c.Value = text
+Next
+MsgBox "Convertion complete."
+End Sub
